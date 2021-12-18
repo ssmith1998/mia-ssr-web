@@ -96,16 +96,16 @@ export default {
     }
   },
   async fetch() {
-  const response =  await this.$axios.get('http://localhost:1337/api/home?populate=*')
+  const response =  await this.$axios.get(`${process.env.NUXT_ENV_API_URL}home?populate=*`)
         console.log(response)
         this.pageData = response.data.data.attributes
         this.pageData.heroImage = process.env.NUXT_ENV_MEDIA + response.data.data.attributes.Hero.data.attributes.url
         const workId = response.data.data.attributes.spotlight_work.data.id
-           const spotlightData =  await this.$axios.get(`http://localhost:1337/api/works/${workId}?populate=*`)
+           const spotlightData =  await this.$axios.get(`${process.env.NUXT_ENV_API_URL}works/${workId}?populate=*`)
            console.log('SPOT',spotlightData)
         this.pageData.spotlightImg = process.env.NUXT_ENV_MEDIA + spotlightData.data.data.attributes.Image.data[0].attributes.url
         this.pageData.spotlightDesc = spotlightData.data.data.attributes.Description
-        const customers = await this.$axios.get('http://localhost:1337/api/customers?populate=*')
+        const customers = await this.$axios.get(`${process.env.NUXT_ENV_API_URL}customers?populate=*`)
         this.pageData.customers = customers.data.data
         console.log(customers)
   },

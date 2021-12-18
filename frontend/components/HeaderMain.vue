@@ -6,7 +6,7 @@
       </div>
       <div class="nav">
         <ul class="flex text-white">
-          <li class="px-6">Work</li>
+          <a href="/work" class="text-white"><li class="px-6">Work</li></a>
           <li class="px-6">Personal</li>
           <li class="px-6">About</li>
           <li class="px-6">Testimonials</li>
