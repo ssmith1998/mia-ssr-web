@@ -7,12 +7,14 @@
       </div>
       <!-- hero end -->
       <!-- work -->
-      <section class="work grid grid-cols-2">
+      <section class="work grid grid-cols-1 sm:grid-cols-2">
         <div v-for="(workItem,index) in work" :key="index" class="workItem flex flex-col justify-center items-center">
             <div class="imgWrapper" style="width:95%; height:100%;">
             <img style="width:100%; height:100%;" :src="`${buildImageUrl(workItem.attributes.image.data.attributes.url)}`" alt="">
             </div>
-            <p class="text-white text-left font-medium py-5 text-xl">{{workItem.attributes.Name}}</p>
+            <div class="textWrapper flex justify-start w-full">
+            <p class="text-white text-left font-medium py-5 text-xl w-full pl-5">{{workItem.attributes.Name}}</p>
+            </div>
         </div>
       </section>
       <!-- work end -->
@@ -84,5 +86,8 @@ body, html{
   width: 150px;
   margin: 40px 0px 0px 0px;
   transition: 0.5s;
+}
+button:hover{
+  opacity: 0.8;
 }
 </style>
