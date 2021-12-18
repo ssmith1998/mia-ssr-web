@@ -47,13 +47,23 @@
     </div>
   </div>
   <!-- customers end -->
+  <!-- work with me -->
+  <div class="work_with_me bg-black text-white flex flex-col justify-center items-center">
+    <h1 class="text-4xl">I would love to work with you.</h1>
+    <button class="button-primary">Contact</button>
+  </div>
+  <!-- work with me end -->
+  <!-- footer -->
+  <footer-main />
+  <!-- footer end -->
     </div>
 </template>
 
 <script>
 import HeaderMain from '../components/HeaderMain.vue'
+import FooterMain from '../components/FooterMain.vue'
 export default {
-  components: { HeaderMain },
+  components: { HeaderMain, FooterMain },
 
   name: 'IndexPage',
   data() {
@@ -183,6 +193,10 @@ button:hover{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.work_with_me{
+  min-height: 66vh;
 }
 
 
