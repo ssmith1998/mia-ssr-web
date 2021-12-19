@@ -2,16 +2,16 @@
   <header :class="{ 'navbar--hidden': !showNavbar }" class="text-black py-10 fixed w-full flex flex-row px-20">
     <div class="wrapper flex justify-between items-center w-full">
       <div class="logo font-medium text-3xl text-white tracking-wider">
-        Mia Silvio Styles
+        <a href="/">Mia Silvio Styles</a>
       </div>
       <div class="nav">
         <ul class="flex text-white">
-          <a href="/work" class="text-white"><li class="px-6">Work</li></a>
-          <li class="px-6">Personal</li>
-          <li class="px-6">About</li>
-          <li class="px-6">Testimonials</li>
-          <li class="px-6">Contact</li>
-          <li class="px-6">Prints</li>
+          <a href="/work"><li :class="activeRoute === '/work' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
+          <a href="/personal"><li :class="activeRoute === '/personal' ? 'active__link text-white px-6' : 'text-white px-6'">Personal</li></a>
+          <a href=""><li :class="activeRoute === '/about' ? 'active__link text-white px-6' : 'text-white px-6'">About</li></a>
+          <a href=""><li :class="activeRoute === '/Testimonials' ? 'active__link text-white px-6' : 'text-white px-6'">Testimonials</li></a>
+          <a href=""><li :class="activeRoute === '/contact' ? 'active__link text-white px-6' : 'text-white px-6'">Contact</li></a>
+          <a href=""><li :class="activeRoute === '/prints' ? 'active__link text-white px-6' : 'text-white px-6'">Prints</li></a>
 </ul>
       </div>
     </div>
@@ -43,7 +43,13 @@ onScroll () {
 },
 mounted () {
   window.addEventListener('scroll', this.onScroll)
+  console.log('ROUTE',this.activeRoute)
 },
+computed: {
+activeRoute() {
+  return this.$route.path
+}
+}
 }
 </script>
 <style>
@@ -57,5 +63,10 @@ header {
 .navbar--hidden {
   box-shadow: none;
   transform: translate3d(0, -100%, 0);
+}
+
+.active__link {
+ text-decoration: underline solid 1px;
+  text-underline-offset: 0.4em;
 }
 </style>

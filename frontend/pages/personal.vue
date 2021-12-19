@@ -1,0 +1,68 @@
+<template>
+  <section class="wrapper">
+        <header-main/>
+            <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-48 pb-36 ">
+                <div v-for="(item, index) in personal" :key="index" class="personalItem flex flex-col justify-center px-10">
+                 <div class="imgWrapper" style="width:95%; height:100%;">
+                    <img :src="buildImageUrl(item.Image.data[0].attributes.url)" class="w-full h-full" alt="">
+                 </div>
+                    <p class="font-medium pt-5">{{item.Name}}</p>
+                </div>
+            </section>
+        <footer-main />
+  </section>
+</template>
+
+<script>
+import HeaderMain from '../components/HeaderMain.vue'
+import FooterMain from '../components/FooterMain.vue'
+export default {
+name: 'personal',
+components: { HeaderMain, FooterMain },
+data() {
+    return {
+        personal: []
+    }
+},
+methods: { 
+    buildImageUrl(url) {
+      return process.env.NUXT_ENV_MEDIA + url
+    }
+},
+async mounted () {
+   const works =  await this.$axios.get(process.env.NUXT_ENV_API_URL + 'categories?populate=*')
+         const cat = works.data.data.filter(cat => {
+             return cat.attributes.Name === 'Personal'
+         })
+
+         const work = cat[0].attributes.works.data
+
+         work.forEach(item => {
+             console.log('ITEM', item)
+             this.$axios.get(process.env.NUXT_ENV_API_URL + `works/${item.id}?populate=*`).then(item => {
+              console.log('WORKS', item)
+              this.personal.push(item.data.data.attributes)
+             })
+         })
+
+         console.log('PERSONAL',this.personal)
+        
+        
+}
+}
+</script>
+
+<style>
+.imgWrapper{
+    overflow: hidden;
+}
+
+.imgWrapper img{
+    transition: all 0.2s ease-in-out;
+}
+
+.imgWrapper:hover img {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+</style>
