@@ -37,12 +37,11 @@ async mounted () {
 
          const work = cat[0].attributes.works.data
 
-         work.forEach(item => {
+         work.forEach( async item => {
              console.log('ITEM', item)
-             this.$axios.get(process.env.NUXT_ENV_API_URL + `works/${item.id}?populate=*`).then(item => {
-              console.log('WORKS', item)
-              this.personal.push(item.data.data.attributes)
-             })
+            const workItem =  await this.$axios.get(process.env.NUXT_ENV_API_URL + `works/${item.id}?populate=*`)
+              console.log('WORKS', workItem)
+              this.personal.push(workItem.data.data.attributes)
          })
 
          console.log('PERSONAL',this.personal)
