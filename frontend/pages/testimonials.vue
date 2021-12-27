@@ -1,17 +1,17 @@
 <template>
 <div class="wrapper">
   <header-main/>
-  <testimonialWithImg :image="pageData.hero_image" :text="pageData.quote"  />
+  <testimonialWithImg :image="pageData.spotlight_testimonial_img" :text="pageData.spotlight_testimonial_info"  />
   <section class="testimonials">
-    <h3 class="text-white text-3xl font-bold md:pl-14 pb-24">What People Are Saying</h3>
+    <h3 class="text-white text-3xl font-bold pl-14 pb-24">What People Are Saying</h3>
     <div class="testimonials">
-      <div v-for="(testimonial, index) in pageData.testimonials" :key="index" class="testimonialItem px-14">
+      <div v-for="(testimonial, index) in pageData.testimonials" :key="index" class="testimonialItem px-14 md:pt-8">
         <p class="text-white">{{testimonial.attributes.message}}</p>
         <p class="text-white pt-14 font-medium">{{testimonial.attributes.person}}</p>
       </div>
     </div>
   </section>
-  <testimonialWithImg :image="pageData.hero_image" :text="pageData.quote"  />
+  <testimonialWithImg :image="pageData.spotlight_testimonial_img_2" :text="pageData.spotlight_testimonial_info_2"  />
   <footer-main />
 </div>
 
@@ -44,9 +44,17 @@ export default {
       // console.log(response)
       this.pageData.testimonials = response.data.data.attributes.testimonials.data
 
-      console.log(this.pageData.testimonials)
+  const spotlightTestimonial =  await this.$axios.get(`${process.env.NUXT_ENV_API_URL}testimonials/${response.data.data.attributes.spotlight_testimonial.data.id}?populate=*`)
+  const spotlightTestimonial2 =  await this.$axios.get(`${process.env.NUXT_ENV_API_URL}testimonials/${response.data.data.attributes.spotlight_testimonial_2.data.id}?populate=*`)
 
-      console.log(response)
+  console.log('spotlight', spotlightTestimonial)
+  this.pageData.spotlight_testimonial_img = spotlightTestimonial.data.data.attributes.image.data.attributes.url
+  this.pageData.spotlight_testimonial_info = spotlightTestimonial.data.data.attributes.message
+  this.pageData.spotlight_testimonial_img_2 = spotlightTestimonial2.data.data.attributes.image.data.attributes.url
+  // this.pageData.spotlight_testimonial_info_2 = spotlightTestimonial2.data.data.attributes.message
+
+
+      // console.log(response)
  
 
    
@@ -63,8 +71,15 @@ body,html {
 }
 
 div.testimonials {
+  @media only screen and (max-width: 650px){
+  display:grid;
+  grid-template-columns: repeat(1, 1fr);
+  }
+@media only screen and (min-width: 651px){
+
   display:grid;
   grid-template-columns: repeat(3, 1fr);
+}
 
 }
 

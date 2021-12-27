@@ -39,6 +39,10 @@ methods: {
 img {
        grid-column: 1/4;
        grid-row: 1;
+
+       @media only screen and (min-width: 680px) {
+           width: 950px;
+       }
 }
 .wrapperInner {
         @media only screen and (min-width:500px){
