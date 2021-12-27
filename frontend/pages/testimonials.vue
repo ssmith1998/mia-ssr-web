@@ -4,7 +4,7 @@
   <testimonialWithImg :image="pageData.hero_image" :text="pageData.quote"  />
   <section class="testimonials">
     <h3 class="text-white text-3xl font-bold md:pl-14 pb-24">What People Are Saying</h3>
-    <div class="testimonials flex ">
+    <div class="testimonials">
       <div v-for="(testimonial, index) in pageData.testimonials" :key="index" class="testimonialItem px-14">
         <p class="text-white">{{testimonial.attributes.message}}</p>
         <p class="text-white pt-14 font-medium">{{testimonial.attributes.person}}</p>
@@ -61,4 +61,11 @@ export default {
 body,html {
   background-color: #000000;
 }
+
+div.testimonials {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
 </style>
