@@ -8,13 +8,15 @@
       <!-- hero end -->
       <!-- work -->
       <section class="work grid grid-cols-1 sm:grid-cols-2">
-        <div v-for="(workItem,index) in work" :key="index" class="workItem flex flex-col justify-center items-center">
-            <div class="imgWrapper" style="width:95%; height:100%;">
+        <div v-for="(workItem,index) in work" :key="index" class="workItem">
+            <a :href="`works/${workItem.id}`" class="flex flex-col justify-center items-center">
+            <div class="imgWrapper" style="width:95%; height:400px;">
             <img style="width:100%; height:100%;" :src="`${buildImageUrl(workItem.attributes.image.data.attributes.url)}`" alt="">
             </div>
             <div class="textWrapper flex justify-start w-full">
             <p class="text-white text-left font-medium py-5 text-xl w-full pl-5">{{workItem.attributes.Name}}</p>
             </div>
+            </a>
         </div>
       </section>
       <!-- work end -->
@@ -37,7 +39,8 @@ export default {
 components: { HeaderMain, FooterMain },
 data() {
     return {
-        work: []
+        work: [],
+        apiUrl: process.env.NUXT_ENV_API_URL
     }
 },
 methods: { 

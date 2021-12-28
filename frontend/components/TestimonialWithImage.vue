@@ -3,10 +3,7 @@
     <div class="wrapperInner px-16 md:items-center">
   <img :src="buildImageUrl(image)" alt="">
   <div class="text bg-white p-14 w-96">
-      <p>“The photos were shared with me very quickly and her attention to detail is incredibly clear, even going above and beyond with creating videos for me that will be incredibly useful for my artist project. She is an amazing photographer and a lovely person all round!”
-
-
-Georgi - Musician"</p>
+      <p>{{text}}</p>
   </div>
     </div>
 </section>

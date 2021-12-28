@@ -51,7 +51,7 @@ export default {
   this.pageData.spotlight_testimonial_img = spotlightTestimonial.data.data.attributes.image.data.attributes.url
   this.pageData.spotlight_testimonial_info = spotlightTestimonial.data.data.attributes.message
   this.pageData.spotlight_testimonial_img_2 = spotlightTestimonial2.data.data.attributes.image.data.attributes.url
-  // this.pageData.spotlight_testimonial_info_2 = spotlightTestimonial2.data.data.attributes.message
+  this.pageData.spotlight_testimonial_info_2 = spotlightTestimonial2.data.data.attributes.message
 
 
       // console.log(response)
