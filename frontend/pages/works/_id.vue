@@ -8,6 +8,7 @@
                 <div class="info">
                         <p class="text-white font-bold">{{item.attributes.Name}}</p>
                         <p class="text-white">{{item.attributes.Description}}</p>
+                        <button class="button-primary">View Work</button>
                 </div>
                 <img v-for="(image, index) in item.attributes.Image.data" :key="index" :src="`${buildImageUrl(image.attributes.url)}`" alt="">
             </div>
@@ -58,17 +59,45 @@ body,html{
     display: grid;
     gap: 20px ;
 }
-/* first work item grid layout */
-.workItem:nth-of-type(1) img:nth-of-type(1){
+/* odd work item grid layout */
+.workItem:nth-of-type(odd) img:nth-of-type(1){
 grid-column: 1/3;
 grid-row: 1/4;
 }
 
-.workItem:nth-of-type(1) img:nth-of-type(2){
+.workItem:nth-of-type(odd) img:nth-of-type(2){
 grid-column: 3/4;
 grid-row: 1/3;
 }
 
-/* second work item */
+/* even work item */
+.workItem:nth-of-type(even) img:nth-of-type(1){
+ grid-column: 4;
+grid-row: 1/4;
+}
+
+.workItem:nth-of-type(even) div.info{
+     grid-column: 2;
+    grid-row: 2;
+}
+
+.workItem:nth-of-type(even) img:nth-of-type(2){
+display:none;
+}
+/* second work item end */
+
+.button-primary{
+  background: #ffffffff;
+  border-radius: 30px;
+  border: none;
+  color: #000000;
+  padding: 20px;
+  width: 150px;
+  margin: 40px 0px 0px 0px;
+  transition: 0.5s;
+}
+button:hover{
+  opacity: 0.8;
+}
 
 </style>
