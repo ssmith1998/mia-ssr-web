@@ -13,8 +13,11 @@
                 <img v-for="(image, index) in item.attributes.Image.data" :key="index" :src="`${buildImageUrl(image.attributes.url)}`" alt="">
             </div>
         </div>
-        <div class="categoryNavWrapper">
-            <a :href="`/category/${nextCat ? nextCat.id : null}`"><p class="text-white">{{nextCat ? nextCat.attributes.Name : null}}</p></a>
+        <div class="categoryNavWrapper flex justify-end py-10 px-10">
+            <a :href="`/category/${nextCat ? nextCat.id : null}`" class="flex items-center">
+            <p class="text-white text-3xl">{{nextCat ? nextCat.attributes.Name : null}}</p>
+            <i class="fas fa-chevron-right text-white pl-5 text-3xl"></i>
+            </a>
         </div>
     </div>
   <footer-main />
@@ -48,7 +51,15 @@ computed: {
 
         let nextCat = this.categories[foundCat + 1]
 
-        return nextCat
+        if(nextCat){
+            return nextCat
+
+        }else{
+            nextCat = this.categories[0]
+            return nextCat
+        }
+
+
     }
 },
 components: { HeaderMain, FooterMain},
