@@ -1,6 +1,5 @@
 <template>
 <div class="wrapper">
-  <header-main/>
   <testimonialWithImg :image="pageData.spotlight_testimonial_img" :text="pageData.spotlight_testimonial_info"  />
   <section class="testimonials">
     <h3 class="text-white text-3xl font-bold pl-14 pb-24">What People Are Saying</h3>
@@ -12,7 +11,6 @@
     </div>
   </section>
   <testimonialWithImg :image="pageData.spotlight_testimonial_img_2" :text="pageData.spotlight_testimonial_info_2"  />
-  <footer-main />
 </div>
 
 </template>

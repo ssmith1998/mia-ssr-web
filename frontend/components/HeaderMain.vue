@@ -4,7 +4,7 @@
       <div class="logo font-medium text-3xl text-white tracking-wider">
         <a href="/">Mia Silvio Styles</a>
       </div>
-      <div class="nav">
+      <div class="nav hidden xl:block">
         <ul class="flex text-white">
           <a href="/works"><li :class="activeRoute === '/work' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
           <a href="/personal"><li :class="activeRoute === '/personal' ? 'active__link text-white px-6' : 'text-white px-6'">Personal</li></a>
@@ -13,9 +13,12 @@
           <a href="/contact"><li :class="activeRoute === '/contact' ? 'active__link text-white px-6' : 'text-white px-6'">Contact</li></a>
           <a href="https://www.etsy.com/uk/shop/miastylesphoto"><li :class="activeRoute === '/prints' ? 'active__link text-white px-6' : 'text-white px-6'">Prints</li></a>
           <a href="https://www.instagram.com/miastylesphoto/" class="flex items-center"><i class="fab fa-instagram text-white flex items-center px-6"></i></a>
-</ul>
+      </ul>
       </div>
     </div>
+      <div class="burgerMenu xl:hidden">
+        <i class="fas fa-bars text-white text-xl" @click="onOpenMenu"></i>
+      </div>
   </header>
 </template>
 
@@ -29,6 +32,10 @@ showNavbar: true,
   }
 },
 methods:{
+onOpenMenu () {
+  this.$emit('openMenu')
+  console.log('open')
+},
 onScroll () {
     // Get the current scroll position
     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
@@ -69,5 +76,15 @@ header {
 .active__link {
  text-decoration: underline solid 1px;
   text-underline-offset: 0.4em;
+}
+
+.mobileNav {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background-color: #000000;
+  height:100%;
+  width: 50%;
+
 }
 </style>

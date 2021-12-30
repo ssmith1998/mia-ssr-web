@@ -1,6 +1,5 @@
 <template>
   <section class="wrapper">
-        <header-main/>
             <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-48 pb-36 ">
                 <div v-for="(item, index) in personal" :key="index" class="personalItem flex flex-col justify-center p-10">
                     <a :href="`/work/${item.id}`" style="width:95%; height:100%;">
@@ -11,7 +10,6 @@
                     </a>
                 </div>
             </section>
-        <footer-main />
   </section>
 </template>
 

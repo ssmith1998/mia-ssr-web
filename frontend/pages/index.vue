@@ -1,6 +1,5 @@
 <template>
 <div class="wrapper">
-  <header-main/>
   <!-- hero -->
   <div class="hero flex justify-center items-center" :style="`background-image:url('${pageData.heroImage}'); width:100%; height:100vh;`">
     <div class="overlay">
@@ -53,9 +52,6 @@
    <a href="/contact"><button class="button-primary">Contact</button></a>
   </div>
   <!-- work with me end -->
-  <!-- footer -->
-  <footer-main />
-  <!-- footer end -->
     </div>
 </template>
 

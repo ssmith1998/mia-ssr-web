@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-          <header-main/>
         <div class="wrapperMain pt-80">
             <h2 class="text-5xl font-medium md:pl-16">{{this.work.Name}}</h2>
             <p class="pt-10 md:pl-16 font-light">{{this.work.Description}}</p>
@@ -17,10 +16,9 @@
             </section>
             <!-- images end -->
             <section class="map">
-                
+
             </section>
         </div>
-        <footer-main />
   </div>
 </template>
 

@@ -1,6 +1,5 @@
 <template>
 <div class="wrapper">
-    <header-main/>
     <div class="wrapperMain pt-48">
         <h2 class="font-bold pl-10 text-white text-4xl">{{this.title}}</h2>
         <div class="worksWrapper pt-26 px-10 py-10">
@@ -20,7 +19,6 @@
             </a>
         </div>
     </div>
-  <footer-main />
 </div>
 </template>
 

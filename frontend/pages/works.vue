@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-  <header-main/>
   <!-- hero -->
       <div class="hero flex items-center justify-center">
           <h1 class="font-bold text-5xl text-center text-white">Work</h1>
@@ -26,9 +25,6 @@
         <a href="/contact"> <button class="button-primary">Contact</button> </a> 
       </section>
       <!-- contact section end  -->
-      <!-- footer -->
-  <footer-main />
-  <!-- footer end -->
   </div>
 </template>
 

@@ -1,10 +1,9 @@
 <template>
 <div class="wrapper">
-  <header-main/>
   <section class="hero py-44 flex justify-center items-center px-10">
     <img :src="buildImageUrl(pageData.hero_image)" class="w-full" alt="">
   </section>
-  <section class="md:pl-14 pb-32 w-1/2">
+  <section class="px-14 pb-32 md:w-1/2">
     <p class="text-white font-bold text-3xl">Hi - I’m Mia</p>
     <br/>
     <p class="text-white font-bold text-3xl">A Portrait, Lifestyle and Editorial Photographer. 
@@ -32,7 +31,6 @@ Get in touch,</p>
   <section class="hero py-12 flex justify-center items-center px-10">
     <img :src="buildImageUrl(pageData.second_img)" class="w-full" alt="">
   </section>
-  <footer-main />
 </div>
 
 </template>
