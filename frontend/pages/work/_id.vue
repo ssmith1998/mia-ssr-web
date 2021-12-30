@@ -16,6 +16,9 @@
                 </div>
             </section>
             <!-- images end -->
+            <section class="map">
+                
+            </section>
         </div>
         <footer-main />
   </div>

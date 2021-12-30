@@ -23,7 +23,7 @@
       <!-- contact section -->
       <section class="text-white bg-black flex flex-col justify-center items-center py-48">
           <h1 class="text-white text-5xl font-bold">Let’s make something beautiful.</h1>
-          <button class="button-primary">Contact</button>
+        <a href="/contact"> <button class="button-primary">Contact</button> </a> 
       </section>
       <!-- contact section end  -->
       <!-- footer -->
