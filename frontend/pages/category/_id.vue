@@ -3,15 +3,18 @@
     <header-main/>
     <div class="wrapperMain pt-48">
         <h2 class="font-bold pl-10 text-white text-4xl">{{this.title}}</h2>
-        <div class="worksWrapper pt-26 px-10">
+        <div class="worksWrapper pt-26 px-10 py-10">
             <div v-for="(item,index) in work" :key="index" class="workItem mt-36">
                 <div class="info">
                         <p class="text-white font-bold">{{item.attributes.Name}}</p>
                         <p class="text-white">{{item.attributes.Description}}</p>
-                        <button class="button-primary">View Work</button>
+                        <a :href="`/work/${item.id}`"><button class="button-primary">View Work</button></a>
                 </div>
                 <img v-for="(image, index) in item.attributes.Image.data" :key="index" :src="`${buildImageUrl(image.attributes.url)}`" alt="">
             </div>
+        </div>
+        <div class="categoryNavWrapper">
+            <a :href="`/category/${nextCat ? nextCat.id : null}`"><p class="text-white">{{nextCat ? nextCat.attributes.Name : null}}</p></a>
         </div>
     </div>
   <footer-main />
@@ -26,7 +29,8 @@ data () {
     return {
     workId: this.$route.params.id,
     work: [],
-    title: ''
+    title: '',
+    categories:[]
     }
 },
 methods: { 
@@ -34,9 +38,24 @@ methods: {
       return process.env.NUXT_ENV_MEDIA + url
     }
 },
+computed: { 
+    nextCat() {
+        let foundCat =  this.categories.findIndex(cat => {
+            if(cat.id === parseInt(this.workId)){
+                return cat
+            }
+        })
+
+        let nextCat = this.categories[foundCat + 1]
+
+        return nextCat
+    }
+},
 components: { HeaderMain, FooterMain},
 async mounted () {
 const response =  await this.$axios.get(`${process.env.NUXT_ENV_API_URL}categories/${this.workId}?populate[0]=works.Image`)
+const cats = await this.$axios.get(`${process.env.NUXT_ENV_API_URL}categories?populate=*`)
+this.categories = cats.data.data
 console.log(response)
 if(response.data.data){
     this.work = response.data.data.attributes.works.data
@@ -45,7 +64,7 @@ if(response.data.data){
 }else{
     // redirect to 404 page
 }
-
+console.log('nextCat', this.nextCat)
 }
 }
 </script>

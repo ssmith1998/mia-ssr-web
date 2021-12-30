@@ -9,7 +9,7 @@
       <!-- work -->
       <section class="work grid grid-cols-1 sm:grid-cols-2">
         <div v-for="(workItem,index) in work" :key="index" class="workItem">
-            <a :href="`works/${workItem.id}`" class="flex flex-col justify-center items-center">
+            <a :href="`category/${workItem.id}`" class="flex flex-col justify-center items-center">
             <div class="imgWrapper" style="width:95%; height:400px;">
             <img style="width:100%; height:100%;" :src="`${buildImageUrl(workItem.attributes.image.data.attributes.url)}`" alt="">
             </div>

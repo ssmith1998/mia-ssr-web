@@ -6,7 +6,7 @@
       </div>
       <div class="nav">
         <ul class="flex text-white">
-          <a href="/work"><li :class="activeRoute === '/work' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
+          <a href="/works"><li :class="activeRoute === '/work' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
           <a href="/personal"><li :class="activeRoute === '/personal' ? 'active__link text-white px-6' : 'text-white px-6'">Personal</li></a>
           <a href="/about"><li :class="activeRoute === '/about' ? 'active__link text-white px-6' : 'text-white px-6'">About</li></a>
           <a href="/testimonials"><li :class="activeRoute === '/testimonials' ? 'active__link text-white px-6' : 'text-white px-6'">Testimonials</li></a>
