@@ -2,11 +2,11 @@
   <header :class="{ 'navbar--hidden': !showNavbar }" class="text-black py-10 fixed w-full flex flex-row px-20">
     <div class="wrapper flex justify-between items-center w-full">
       <div class="logo font-medium text-3xl text-white tracking-wider">
-        <a href="/">Mia Silvio Styles</a>
+        <a href="/" class="text-lg md:text-3xl">Mia Silvio Styles</a>
       </div>
       <div class="nav hidden xl:block">
         <ul class="flex text-white">
-          <a href="/works"><li :class="activeRoute === '/work' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
+          <a href="/works"><li :class="activeRoute === '/works' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
           <a href="/personal"><li :class="activeRoute === '/personal' ? 'active__link text-white px-6' : 'text-white px-6'">Personal</li></a>
           <a href="/about"><li :class="activeRoute === '/about' ? 'active__link text-white px-6' : 'text-white px-6'">About</li></a>
           <a href="/testimonials"><li :class="activeRoute === '/testimonials' ? 'active__link text-white px-6' : 'text-white px-6'">Testimonials</li></a>
@@ -17,7 +17,7 @@
       </div>
     </div>
       <div class="burgerMenu xl:hidden">
-        <i class="fas fa-bars text-white text-xl" @click="onOpenMenu"></i>
+        <i class="fas fa-bars text-white text-3xl" @click="onOpenMenu"></i>
       </div>
   </header>
 </template>
