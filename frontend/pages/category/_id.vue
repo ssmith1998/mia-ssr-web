@@ -6,7 +6,7 @@
         <div class="worksWrapper pt-26 px-10 py-10">
             <div v-for="(item,index) in work" :key="index" class="workItem mt-36">
                 <div class="info">
-                        <p class="text-white font-bold">{{item.attributes.Name}}</p>
+                        <p class="text-white font-bold text-3xl">{{item.attributes.Name}}</p>
                         <p class="text-white">{{item.attributes.Description}}</p>
                         <a :href="`/work/${item.id}`"><button class="button-primary">View Work</button></a>
                 </div>

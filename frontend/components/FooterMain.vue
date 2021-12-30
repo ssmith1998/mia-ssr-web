@@ -1,10 +1,10 @@
 <template>
   <footer class="pl-10 flex items-center">
     <ul class="p-0 flex flex-col justify-center">
-        <li class="font-medium">Home</li>
-        <li class="font-medium">About</li>
-        <li class="font-medium">Testimonials</li>
-        <li class="font-medium">Contact</li>
+       <a href="/"><li class="font-medium">Home</li></a> 
+       <a href="/about"> <li class="font-medium">About</li></a>
+       <a href="/testimonials"> <li class="font-medium">Testimonials</li></a>
+       <a href="/contact"><li class="font-medium">Contact</li></a> 
     </ul> 
   </footer>
 </template>

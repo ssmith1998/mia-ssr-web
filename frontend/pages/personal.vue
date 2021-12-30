@@ -2,11 +2,13 @@
   <section class="wrapper">
         <header-main/>
             <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-48 pb-36 ">
-                <div v-for="(item, index) in personal" :key="index" class="personalItem flex flex-col justify-center px-10">
-                 <div class="imgWrapper" style="width:95%; height:100%;">
-                    <img :src="buildImageUrl(item.Image.data[0].attributes.url)" class="w-full h-full" alt="">
-                 </div>
-                    <p class="font-medium pt-5">{{item.Name}}</p>
+                <div v-for="(item, index) in personal" :key="index" class="personalItem flex flex-col justify-center p-10">
+                    <a :href="`/work/${item.id}`" style="width:95%; height:100%;">
+                        <div class="imgWrapper" style="width:95%; height:100%;">
+                            <img :src="buildImageUrl(item.item.Image.data[0].attributes.url)" class="w-full h-full" alt="">
+                        </div>
+                        <p class="font-medium pt-5">{{item.item.Name}}</p>
+                    </a>
                 </div>
             </section>
         <footer-main />
@@ -41,7 +43,7 @@ async mounted () {
              console.log('ITEM', item)
             const workItem =  await this.$axios.get(process.env.NUXT_ENV_API_URL + `works/${item.id}?populate=*`)
               console.log('WORKS', workItem)
-              this.personal.push(workItem.data.data.attributes)
+              this.personal.push({item: workItem.data.data.attributes, id:workItem.data.data.id })
          })
 
          console.log('PERSONAL',this.personal)
