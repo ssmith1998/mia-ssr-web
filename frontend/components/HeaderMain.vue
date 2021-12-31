@@ -6,13 +6,13 @@
       </div>
       <div class="nav hidden xl:block">
         <ul class="flex text-white">
-          <a href="/works"><li :class="activeRoute === '/works' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
-          <a href="/personal"><li :class="activeRoute === '/personal' ? 'active__link text-white px-6' : 'text-white px-6'">Personal</li></a>
-          <a href="/about"><li :class="activeRoute === '/about' ? 'active__link text-white px-6' : 'text-white px-6'">About</li></a>
-          <a href="/testimonials"><li :class="activeRoute === '/testimonials' ? 'active__link text-white px-6' : 'text-white px-6'">Testimonials</li></a>
-          <a href="/contact"><li :class="activeRoute === '/contact' ? 'active__link text-white px-6' : 'text-white px-6'">Contact</li></a>
-          <a href="https://www.etsy.com/uk/shop/miastylesphoto"><li :class="activeRoute === '/prints' ? 'active__link text-white px-6' : 'text-white px-6'">Prints</li></a>
+          <a href="/works" class="flex items-center justify-center"><li :class="activeRoute === '/works' ? 'active__link text-white px-6' : 'text-white px-6'">Work</li></a>
+          <a href="/personal" class="flex items-center justify-center"><li :class="activeRoute === '/personal' ? 'active__link text-white px-6' : 'text-white px-6'">Personal</li></a>
+          <a href="/about" class="flex items-center justify-center"><li :class="activeRoute === '/about' ? 'active__link text-white px-6' : 'text-white px-6'">About</li></a>
+          <a href="/testimonials" class="flex items-center justify-center"><li :class="activeRoute === '/testimonials' ? 'active__link text-white px-6' : 'text-white px-6'">Testimonials</li></a>
+          <a href="https://www.etsy.com/uk/shop/miastylesphoto" class="flex items-center justify-center"><li :class="activeRoute === '/prints' ? 'active__link text-white px-6' : 'text-white px-6'">Prints</li></a>
           <a href="https://www.instagram.com/miastylesphoto/" class="flex items-center"><i class="fab fa-instagram text-white flex items-center px-6"></i></a>
+          <a :href="`mailto:${email}`" class="flex items-center justify-center mx-6"><button class="px-6 button-header">Contact</button></a>
       </ul>
       </div>
     </div>
@@ -28,7 +28,8 @@ name: 'header-main',
 data() {
   return {
 showNavbar: true,
-  lastScrollPosition: 0
+  lastScrollPosition: 0,
+  email: ''
   }
 },
 methods:{
@@ -52,6 +53,10 @@ onScroll () {
 mounted () {
   window.addEventListener('scroll', this.onScroll)
   console.log('ROUTE',this.activeRoute)
+  this.$axios.get(`${process.env.NUXT_ENV_API_URL}contact?populate=*`).then(response => {
+    this.email = response.data.data.attributes.email
+  })
+
 },
 computed: {
 activeRoute() {
@@ -86,5 +91,13 @@ header {
   height:100%;
   width: 50%;
 
+}
+.button-header{
+  background: #ffffffff;
+  border-radius: 10px;
+  border: none;
+  color: #000000;
+  transition: 0.5s;
+  padding: 5px;
 }
 </style>

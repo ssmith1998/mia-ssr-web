@@ -22,7 +22,7 @@
       <!-- contact section -->
       <section class="text-white bg-black flex flex-col justify-center items-center py-48">
           <h1 class="text-white text-5xl font-bold">Let’s make something beautiful.</h1>
-        <a href="/contact"> <button class="button-primary">Contact</button> </a> 
+        <a :href="`mailto:${email}`"> <button class="button-primary">Contact</button> </a> 
       </section>
       <!-- contact section end  -->
   </div>
@@ -36,7 +36,8 @@ components: { HeaderMain, FooterMain },
 data() {
     return {
         work: [],
-        apiUrl: process.env.NUXT_ENV_API_URL
+        apiUrl: process.env.NUXT_ENV_API_URL,
+        email:''
     }
 },
 methods: { 
@@ -49,6 +50,10 @@ mounted() {
          this.work = works.data.data
          console.log(works.data.data[0])
      })
+    this.$axios.get(`${process.env.NUXT_ENV_API_URL}contact?populate=*`).then(resp => {
+        console.log('EMAIL',resp)
+        this.email = resp.data.data.attributes.email
+    })
 }
 }
 </script>

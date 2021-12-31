@@ -7,7 +7,7 @@
     <div class="contentWrapper flex flex-col items-center">
     <p class="text-center text-white font-medium text-6xl">{{pageData.Hero_description}}</p>
     <p class="text-center text-white font-medium text-xl pt-10">{{pageData.hero_small_text}}</p>
-   <a href="/contact"> <button class="contactBtn button-primary">
+   <a :href="`mailto:${email}`"> <button class="contactBtn button-primary">
       Contact
     </button></a>
     </div>
@@ -49,7 +49,7 @@
   <!-- work with me -->
   <div class="work_with_me bg-black text-white flex flex-col justify-center items-center">
     <h1 class="text-4xl">I would love to work with you.</h1>
-   <a href="/contact"><button class="button-primary">Contact</button></a>
+   <a :href="`mailto:${email}`"><button class="button-primary">Contact</button></a>
   </div>
   <!-- work with me end -->
     </div>
@@ -64,6 +64,7 @@ export default {
   name: 'IndexPage',
   data() {
     return {
+      email: '',
       pageData: {
         heroImage: '',
         spotlightImg: '',
@@ -106,6 +107,9 @@ export default {
         const customers = await this.$axios.get(`${process.env.NUXT_ENV_API_URL}customers?populate=*`)
         this.pageData.customers = customers.data.data
         console.log(customers)
+       const resp = await this.$axios.get(`${process.env.NUXT_ENV_API_URL}contact?populate=*`)
+    console.log('EMAIL',resp)
+    this.email = resp.data.data.attributes.email
   },
   mounted() {
     // this.onGetPage()
