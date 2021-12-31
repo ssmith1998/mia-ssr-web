@@ -26,10 +26,15 @@ export default {
       }
     ],
     link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }],
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap'
+      }
+    ],
     script: [{
       hid: 'fontawesome',
       src: 'https://kit.fontawesome.com/f2e27c939b.js',
